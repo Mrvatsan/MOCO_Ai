@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Session {
+  id             String   @id @default(cuid())
+  url            String
+  persona        String
+  status         String   @default("pending") // pending, exploring, generating, completed, failed
+  progress       Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  report         Report?
+}
+
+model Report {
+  id               String   @id @default(cuid())
+  sessionId        String   @unique
+  session          Session  @relation(fields: [sessionId], references: [id])
+  uxScore          Int
+  summary          String
+  personaDebate    Json?    // Stores the debate between personas
+  frustrationData  Json?    // Heatmap and rage quit probability
+  createdAt        DateTime @default(now())
+  issues           Issue[]
+}
+
+model Issue {
+  id          String   @id @default(cuid())
+  reportId    String
+  report      Report   @relation(fields: [reportId], references: [id])
+  severity    String   // critical, medium, low
+  title       String
+  description String
+  fixCode     String?
+  screenshot  String?
+}
