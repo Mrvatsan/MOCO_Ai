@@ -1,3 +1,4 @@
+﻿// MOCO_AI Landing Page - Autonomous UX Auditor Entry Point
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Globe, User, GraduationCap, Code2, ArrowRight, ShieldCheck, Zap, Sparkles } from 'lucide-react';
@@ -137,3 +138,4 @@ const LandingPage: React.FC = () => {
 };
 
 export default LandingPage;
+
