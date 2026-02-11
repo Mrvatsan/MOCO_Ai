@@ -1,3 +1,4 @@
+﻿// MOCO_AI Report Page - Interactive UX Analysis Dashboard
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AlertTriangle, CheckCircle, TrendingUp, Users, Map as MapIcon, Share2, Download, Rocket, ChevronRight, LayoutDashboard, Search } from 'lucide-react';
@@ -12,9 +13,9 @@ const ReportPage: React.FC = () => {
             { id: 2, severity: 'medium', title: 'Dense Jargon', desc: 'Terms like "Asynchronous Webhook" are confusing for the Layman persona.', fix: 'Replace with "Real-time Update" or add tooltips.' },
         ],
         debate: [
-            { persona: 'Layman', comment: "I couldn't find how to pay! The blue box covered everything.", icon: '👨‍💼' },
-            { persona: 'Developer', comment: "The modal trigger is efficient, but the z-index collision is definitely a junior mistake.", icon: '💻' },
-            { winner: 'AI Vote', resolution: "The z-index must be fixed; Layman's confusion is valid data.", icon: '🤖' }
+            { persona: 'Layman', comment: "I couldn't find how to pay! The blue box covered everything.", icon: 'ðŸ‘¨â€ðŸ’¼' },
+            { persona: 'Developer', comment: "The modal trigger is efficient, but the z-index collision is definitely a junior mistake.", icon: 'ðŸ’»' },
+            { winner: 'AI Vote', resolution: "The z-index must be fixed; Layman's confusion is valid data.", icon: 'ðŸ¤–' }
         ]
     };
 
@@ -198,3 +199,4 @@ const ReportPage: React.FC = () => {
 };
 
 export default ReportPage;
+
