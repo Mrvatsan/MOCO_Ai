@@ -119,17 +119,17 @@ const LandingPage: React.FC = () => {
             <footer className="w-full max-w-5xl border-t border-white/[0.05] py-16 flex flex-col md:flex-row justify-between items-center text-slate-500 text-[13px] font-medium font-mono uppercase tracking-widest">
                 <div className="flex items-center space-x-8 mb-8 md:mb-0">
                     <div className="flex items-center space-x-2.5">
-                        <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.5)] animate-pulse" />
+                        <div className="w-2 h-2 rounded-full bg-cyan-500 shadow-[0_0_12px_rgba(6,182,212,0.5)] animate-pulse" />
                         <span>Core Engine: Ready</span>
                     </div>
                     <div className="flex items-center space-x-2.5">
-                        <ShieldCheck size={16} className="text-violet-500" />
+                        <ShieldCheck size={16} className="text-indigo-500" />
                         <span>Analysis Secure</span>
                     </div>
                 </div>
                 <div className="flex items-center gap-1.5 opacity-60">
                     <span>Powering</span>
-                    <Zap size={14} className="fill-violet-500 text-violet-500" />
+                    <Zap size={14} className="fill-amber-500 text-amber-500" />
                     <span>User Intelligence</span>
                 </div>
             </footer>
