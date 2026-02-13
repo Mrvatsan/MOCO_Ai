@@ -34,7 +34,7 @@
     }
 
     .gradient-text {
-        @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-slate-200 to-slate-400 font-bold;
+        @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-cyan-100 to-indigo-400 font-bold;
     }
 
     .mesh-gradient {
