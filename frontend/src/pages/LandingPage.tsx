@@ -36,7 +36,7 @@ const LandingPage: React.FC = () => {
                         transition={{ delay: 0.2 }}
                         className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 mb-10 backdrop-blur-md shadow-inner shadow-white/5"
                     >
-                        <Sparkles size={14} className="text-violet-400 animate-pulse" />
+                        <Sparkles size={14} className="text-cyan-400 animate-pulse" />
                         <span className="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase">Autonomous UX Auditor</span>
                     </motion.div>
 
@@ -45,7 +45,7 @@ const LandingPage: React.FC = () => {
                     </h1>
 
                     <p className="text-lg md:text-xl text-slate-400 mb-16 max-w-2xl mx-auto leading-relaxed font-medium">
-                        Deploy autonomous AI agents to stress-test your UI. Surface frustration, friction, and confusion <span className="text-violet-400">before</span> your users do.
+                        Deploy autonomous AI agents to stress-test your UI. Surface frustration, friction, and confusion <span className="text-cyan-400">before</span> your users do.
                     </p>
 
                     <form onSubmit={handleSubmit} className="space-y-12">
