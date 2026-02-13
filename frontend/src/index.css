@@ -26,7 +26,7 @@
     }
 
     .glass-input {
-        @apply bg-white/[0.02] border border-white/[0.1] focus:border-violet-500/50 focus:ring-4 focus:ring-violet-500/10 transition-all duration-300;
+        @apply bg-white/[0.02] border border-white/[0.1] focus:border-cyan-500/50 focus:ring-4 focus:ring-cyan-500/10 transition-all duration-300;
     }
 
     .btn-primary {
