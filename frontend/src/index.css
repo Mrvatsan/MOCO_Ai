@@ -2,12 +2,12 @@
 @import 'tailwindcss';
 
 @theme {
-    --color-primary: #8b5cf6;
-    --color-primary-hover: #7c3aed;
-    --color-secondary: #10b981;
-    --color-bg-dark: #030712;
+    --color-primary: #06b6d4;
+    --color-primary-hover: #0891b2;
+    --color-secondary: #6366f1;
+    --color-bg-dark: #020617;
     --color-card-dark: #0f172a;
-    --color-accent: #f43f5e;
+    --color-accent: #f59e0b;
     --color-text-main: #f8fafc;
     --color-text-dim: #94a3b8;
     --font-sans: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
