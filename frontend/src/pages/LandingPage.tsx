@@ -84,7 +84,7 @@ const LandingPage: React.FC = () => {
                                     whileHover={{ y: -4, scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
                                     className={`relative p-8 rounded-[2rem] text-left transition-all duration-500 glass-card group border-2 ${persona === p.id
-                                        ? 'border-violet-500/50 bg-violet-500/5'
+                                        ? 'border-cyan-500/50 bg-cyan-500/5'
                                         : 'border-transparent'
                                         }`}
                                 >
