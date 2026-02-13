@@ -39,15 +39,15 @@
 
     .mesh-gradient {
         background-image:
-            radial-gradient(at 0% 0%, hsla(263, 70%, 50%, 0.15) 0px, transparent 50%),
-            radial-gradient(at 100% 0%, hsla(160, 84%, 39%, 0.15) 0px, transparent 50%),
-            radial-gradient(at 100% 100%, hsla(263, 70%, 50%, 0.1) 0px, transparent 50%),
-            radial-gradient(at 0% 100%, hsla(160, 84%, 39%, 0.1) 0px, transparent 50%);
+            radial-gradient(at 0% 0%, hsla(187, 92%, 45%, 0.1) 0px, transparent 50%),
+            radial-gradient(at 100% 0%, hsla(245, 80%, 65%, 0.1) 0px, transparent 50%),
+            radial-gradient(at 100% 100%, hsla(187, 92%, 45%, 0.05) 0px, transparent 50%),
+            radial-gradient(at 0% 100%, hsla(245, 80%, 65%, 0.05) 0px, transparent 50%);
     }
 
     .glow-mesh {
         @apply absolute -z-10 w-full h-full opacity-60 pointer-events-none;
-        background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+        background: radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.15) 0%, transparent 50%);
     }
 }
 
