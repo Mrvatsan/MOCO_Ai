@@ -30,7 +30,7 @@
     }
 
     .btn-primary {
-        @apply relative overflow-hidden bg-violet-600 hover:bg-violet-500 text-white font-bold px-6 py-3 rounded-xl transition-all duration-300 active:scale-95 shadow-lg shadow-violet-500/25;
+        @apply relative overflow-hidden bg-cyan-600 hover:bg-cyan-500 text-white font-bold px-6 py-3 rounded-xl transition-all duration-300 active:scale-95 shadow-lg shadow-cyan-500/25;
     }
 
     .gradient-text {
