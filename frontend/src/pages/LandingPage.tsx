@@ -51,7 +51,7 @@ const LandingPage: React.FC = () => {
                     <form onSubmit={handleSubmit} className="space-y-12">
                         <div className="relative group max-w-3xl mx-auto">
                             {/* Animated Border */}
-                            <div className="absolute -inset-[1px] bg-gradient-to-r from-violet-500 via-emerald-500 to-rose-500 rounded-3xl blur-[2px] opacity-20 group-focus-within:opacity-100 transition duration-700"></div>
+                            <div className="absolute -inset-[1px] bg-gradient-to-r from-cyan-500 via-indigo-500 to-amber-500 rounded-3xl blur-[2px] opacity-20 group-focus-within:opacity-100 transition duration-700"></div>
 
                             <div className="relative glass-card rounded-[1.5rem] p-2 flex items-center gap-2">
                                 <div className="pl-5 pr-1 text-slate-500">
