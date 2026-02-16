@@ -41,3 +41,5 @@ model Issue {
   fixCode     String?
   screenshot  String?
 }
+
+// End of MOCO_AI Database Schema
