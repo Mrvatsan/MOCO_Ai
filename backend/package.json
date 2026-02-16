@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "MOCO_AI Backend - Express server with Prisma ORM and Gemini AI integration",
   "main": "index.js",
   "type": "module",
   "scripts": {
