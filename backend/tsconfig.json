@@ -1,6 +1,6 @@
 {
   // Visit https://aka.ms/tsconfig to read more about this file
-  "compilerOptions": {
+  // TypeScript configuration for MOCO_AI backend server`n  "compilerOptions": {
     // File Layout
     "rootDir": "./src",
     "outDir": "./dist",
