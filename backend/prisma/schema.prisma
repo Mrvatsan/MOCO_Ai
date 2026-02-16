@@ -1,3 +1,5 @@
+// MOCO_AI Database Schema - SQLite Provider
+// Defines core data models for UX audit sessions
 generator client {
   provider = "prisma-client-js"
 }
