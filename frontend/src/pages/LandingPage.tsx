@@ -1,21 +1,56 @@
-﻿// MOCO_AI Landing Page - Autonomous UX Auditor Entry Point
-import React, { useState } from 'react';
+﻿import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Globe, User, GraduationCap, Code2, ArrowRight, ShieldCheck, Zap, Sparkles } from 'lucide-react';
+import axios from 'axios';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 const LandingPage: React.FC = () => {
+    const navigate = useNavigate();
     const [url, setUrl] = useState('');
     const [persona, setPersona] = useState('Layman');
+    const [backendStatus, setBackendStatus] = useState<'checking' | 'ready' | 'offline'>('checking');
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        const checkHealth = async () => {
+            try {
+                const response = await axios.get(`${API_URL}/api/health`);
+                if (response.data.status === 'ok') {
+                    setBackendStatus('ready');
+                } else {
+                    setBackendStatus('offline');
+                }
+            } catch (error) {
+                setBackendStatus('offline');
+            }
+        };
+        checkHealth();
+    }, []);
 
     const personas = [
-        { id: 'Layman', icon: User, label: 'Layman', desc: 'Clicks slowly, wants simplicity, easily confused by jargon.', color: 'from-emerald-400 to-cyan-400' },
+        { id: 'Layman', icon: User, label: 'Layman', desc: 'Clicks slowly, wants simplicity, easily confused', color: 'from-emerald-400 to-cyan-400' },
         { id: 'Student', icon: GraduationCap, label: 'Student', desc: 'Mobile-first, looks for tutorials, knows basics.', color: 'from-violet-400 to-fuchsia-400' },
         { id: 'Developer', icon: Code2, label: 'Developer', desc: 'Focuses on API docs, shortcuts, and performance.', color: 'from-rose-400 to-orange-400' },
     ];
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Testing', url, 'as', persona);
+        setLoading(true);
+        try {
+            const response = await axios.post(`${API_URL}/api/sessions`, {
+                url,
+                persona
+            });
+            const session = response.data;
+            navigate(`/report/${session.id}`);
+        } catch (error) {
+            console.error('Failed to initiate audit:', error);
+            alert('Failed to connect to backend engine.');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -36,7 +71,7 @@ const LandingPage: React.FC = () => {
                         transition={{ delay: 0.2 }}
                         className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 mb-10 backdrop-blur-md shadow-inner shadow-white/5"
                     >
-                        <Sparkles size={14} className="text-cyan-400 animate-pulse" />
+                        <Sparkles size={14} className="text-violet-400 animate-pulse" />
                         <span className="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase">Autonomous UX Auditor</span>
                     </motion.div>
 
@@ -45,13 +80,13 @@ const LandingPage: React.FC = () => {
                     </h1>
 
                     <p className="text-lg md:text-xl text-slate-400 mb-16 max-w-2xl mx-auto leading-relaxed font-medium">
-                        Deploy autonomous AI agents to stress-test your UI. Surface frustration, friction, and confusion <span className="text-cyan-400">before</span> your users do.
+                        Deploy autonomous AI agents to stress-test your UI. Surface frustration, friction, and confusion <span className="text-violet-400">before</span> your users do.
                     </p>
 
                     <form onSubmit={handleSubmit} className="space-y-12">
                         <div className="relative group max-w-3xl mx-auto">
                             {/* Animated Border */}
-                            <div className="absolute -inset-[1px] bg-gradient-to-r from-cyan-500 via-indigo-500 to-amber-500 rounded-3xl blur-[2px] opacity-20 group-focus-within:opacity-100 transition duration-700"></div>
+                            <div className="absolute -inset-[1px] bg-gradient-to-r from-violet-500 via-emerald-500 to-rose-500 rounded-3xl blur-[2px] opacity-20 group-focus-within:opacity-100 transition duration-700"></div>
 
                             <div className="relative glass-card rounded-[1.5rem] p-2 flex items-center gap-2">
                                 <div className="pl-5 pr-1 text-slate-500">
@@ -67,10 +102,12 @@ const LandingPage: React.FC = () => {
                                 />
                                 <button
                                     type="submit"
-                                    className="btn-primary group/btn flex items-center gap-2 whitespace-nowrap min-w-[160px] justify-center"
+                                    disabled={loading || backendStatus === 'offline'}
+                                    className={`btn-primary group/btn flex items-center gap-2 whitespace-nowrap min-w-[160px] justify-center transition-all duration-300 ${(loading || backendStatus === 'offline') ? 'opacity-50 cursor-not-allowed grayscale' : ''
+                                        }`}
                                 >
-                                    <span>Initiate Audit</span>
-                                    <ArrowRight size={20} className="group-hover/btn:translate-x-1 transition-transform" />
+                                    <span>{loading ? 'Analyzing...' : 'Initiate Audit'}</span>
+                                    {!loading && <ArrowRight size={20} className="group-hover/btn:translate-x-1 transition-transform" />}
                                 </button>
                             </div>
                         </div>
@@ -84,7 +121,7 @@ const LandingPage: React.FC = () => {
                                     whileHover={{ y: -4, scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
                                     className={`relative p-8 rounded-[2rem] text-left transition-all duration-500 glass-card group border-2 ${persona === p.id
-                                        ? 'border-cyan-500/50 bg-cyan-500/5'
+                                        ? 'border-violet-500/50 bg-violet-500/5'
                                         : 'border-transparent'
                                         }`}
                                 >
@@ -119,18 +156,21 @@ const LandingPage: React.FC = () => {
             <footer className="w-full max-w-5xl border-t border-white/[0.05] py-16 flex flex-col md:flex-row justify-between items-center text-slate-500 text-[13px] font-medium font-mono uppercase tracking-widest">
                 <div className="flex items-center space-x-8 mb-8 md:mb-0">
                     <div className="flex items-center space-x-2.5">
-                        <div className="w-2 h-2 rounded-full bg-cyan-500 shadow-[0_0_12px_rgba(6,182,212,0.5)] animate-pulse" />
-                        <span>Core Engine: Ready</span>
+                        <div className={`w-2 h-2 rounded-full shadow-[0_0_12px_rgba(16,185,129,0.5)] animate-pulse ${backendStatus === 'ready' ? 'bg-emerald-500' :
+                            backendStatus === 'offline' ? 'bg-rose-500 shadow-rose-500/50' :
+                                'bg-amber-500 shadow-amber-500/50'
+                            }`} />
+                        <span>Core Engine: {backendStatus.toUpperCase()}</span>
                     </div>
                     <div className="flex items-center space-x-2.5">
-                        <ShieldCheck size={16} className="text-indigo-500" />
+                        <ShieldCheck size={16} className="text-violet-500" />
                         <span>Analysis Secure</span>
                     </div>
                 </div>
                 <div className="flex items-center gap-1.5 opacity-60">
-                    <span>Powering</span>
-                    <Zap size={14} className="fill-amber-500 text-amber-500" />
-                    <span>User Intelligence</span>
+                    <span>Powered</span>
+
+                    <span>by vatsan</span>
                 </div>
             </footer>
         </div>
