@@ -1,3 +1,6 @@
+# MOCO_AI - Git Ignore Configuration
+# Excludes build output, dependencies, and sensitive files
+
 node_modules/
 dist/
 *.db
