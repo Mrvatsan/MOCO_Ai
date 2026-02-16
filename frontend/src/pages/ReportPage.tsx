@@ -1,4 +1,6 @@
-﻿import React, { useState, useEffect } from 'react';
+// ReportPage Component - Interactive Analysis Dashboard
+// Displays AI-generated UX audit results with visualizations
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { AlertTriangle, CheckCircle, TrendingUp, TrendingDown, Users, Map as MapIcon, Share2, Download, Rocket, ChevronRight, LayoutDashboard, Search, ArrowLeft, Loader2 } from 'lucide-react';
@@ -69,7 +71,7 @@ const ReportPage: React.FC = () => {
             return (
                 <div className="min-h-screen bg-[#030711] text-slate-100 flex items-center justify-center mesh-gradient">
                     <div className="text-center space-y-6">
-                        <div className="text-6xl">❌</div>
+                        <div className="text-6xl">?</div>
                         <h1 className="text-2xl font-black text-rose-400">{error}</h1>
                         <button onClick={() => navigate('/')} className="btn-primary px-6 py-3 rounded-xl">
                             <ArrowLeft size={18} className="inline mr-2" /> Go Back
@@ -91,9 +93,9 @@ const ReportPage: React.FC = () => {
     // --- In-Progress State ---
     if (session.status !== 'completed' && session.status !== 'failed') {
         const statusMessages: Record<string, string> = {
-            pending: '🕐 Preparing analysis engine...',
-            exploring: '🔍 Fetching and exploring the page...',
-            generating: '🧠 AI is analyzing the UX...',
+            pending: '?? Preparing analysis engine...',
+            exploring: '?? Fetching and exploring the page...',
+            generating: '?? AI is analyzing the UX...',
         };
 
         return (
@@ -119,7 +121,7 @@ const ReportPage: React.FC = () => {
                             className="h-full bg-gradient-to-r from-violet-500 to-emerald-500 rounded-full"
                         />
                     </div>
-                    <p className="text-xs text-slate-600 font-mono">{session.progress}% — {session.url}</p>
+                    <p className="text-xs text-slate-600 font-mono">{session.progress}% � {session.url}</p>
                 </motion.div>
             </div>
         );
@@ -130,7 +132,7 @@ const ReportPage: React.FC = () => {
         return (
             <div className="min-h-screen bg-[#030711] text-slate-100 flex items-center justify-center mesh-gradient">
                 <div className="text-center space-y-6 max-w-md">
-                    <div className="text-6xl">⚠️</div>
+                    <div className="text-6xl">??</div>
                     <h1 className="text-2xl font-black text-rose-400">Analysis Failed</h1>
                     <p className="text-slate-400">Could not complete the analysis for this URL. Please try again.</p>
                     <button onClick={() => navigate('/')} className="btn-primary px-6 py-3 rounded-xl">
