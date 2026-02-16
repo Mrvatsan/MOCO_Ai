@@ -1,4 +1,6 @@
-﻿import React, { useState, useEffect } from 'react';
+// LandingPage Component - MOCO_AI Entry Point
+// Provides URL input with backend connectivity status
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Globe, User, GraduationCap, Code2, ArrowRight, ShieldCheck, Zap, Sparkles } from 'lucide-react';
