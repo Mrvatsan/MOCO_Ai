@@ -9,3 +9,9 @@ dist/
 *.d.ts
 *.d.ts.map
 *.js.map
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
