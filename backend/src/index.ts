@@ -1,3 +1,5 @@
+// MOCO_AI Backend Server - Express Application
+// Handles API routes for UX audit sessions and AI analysis
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
