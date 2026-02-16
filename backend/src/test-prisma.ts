@@ -1,3 +1,5 @@
+// Prisma Client Integration Test
+// Ensures ORM layer correctly interfaces with SQLite
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
